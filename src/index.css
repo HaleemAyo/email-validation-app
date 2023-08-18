@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  font-weight: 400;
+  background-color: white;
+}
+.wrapper {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+}
+.wordings {
+  width: 50%;
+  padding: 70px 0;
+  max-width: 400px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.wordings > p {
+  margin-bottom: 1.5rem;
+}
+p {
+  color: hsl(235, 18%, 26%);
+}
+.icon {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+.icon img {
+  width: 1rem;
+}
+.mail {
+  max-width: 360px;
+  margin-top: 2rem;
+}
+.mail div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 0.5rem;
+}
+.mail div label,
+.mail div p {
+  font-weight: 700;
+}
+.error {
+  background-color: hsl(4, 74%, 95%);
+  border: none;
+  outline: red solid;
+  color: red;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+}
+.btn {
+  margin-top: 1.5rem;
+  max-width: 360px;
+}
+button {
+  width: 100%;
+  background-color: black;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.9s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(to left, hsl(4, 100%, 67%), red);
+}
+.message-wrapper {
+  width: 100%;
+  max-width: 500px;
+  padding-left: 3rem;
+  margin: 5rem auto;
+}
+.message-icon {
+  width: 3rem;
+  margin-bottom: 1.5rem;
+}
+.message-wrapper p {
+  width: 75%;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    margin: 0;
+    overflow: hidden;
+  }
+  .wordings {
+    width: 100%;
+    padding: 0;
+    max-width: 300px;
+    margin: 2rem auto;
+  }
+  .mail {
+    margin-top: 3rem;
+  }
+
+  .message-wrapper {
+    width: 100%;
+    max-width: 300px;
+    padding-left:0 ;
+    margin: 5rem auto;
+  }
+  .message-icon {
+    width: 4rem;
+  }
+  .message-wrapper h1{
+    font-size: 2.5rem;
+  }
+    .message-wrapper p {
+      width: 100%;
+      margin-bottom: 5rem;
+    }
+}
