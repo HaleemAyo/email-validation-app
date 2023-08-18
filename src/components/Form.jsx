@@ -21,14 +21,12 @@ const data = [
   },
 ];
 
-//Prevent the form from loading fast, Validate the email, read the content of the input(controlled elements using states), the button should go to the message component
-
-const Form = ({ setEmail,email }) => {
-  const [isValidEmail, setIsValidEmail] = useState(false); // To conditionally render the components
-  const [showErrorMessage, setShowErrorMessage] = useState(false); // New state
+const Form = ({ setEmail, email }) => {
+  const [isValidEmail, setIsValidEmail] = useState(false); 
+  const [showErrorMessage, setShowErrorMessage] = useState(false); // State that'll know if the user enters a wrong email format
 
   function handleEmailChange(e) {
-    setEmail(e.target.value);
+    setEmail(e.target.value); //To get the value of the input element by making React control it instead of the DOM
     setIsValidEmail(false); //Setting the value back to the default
   }
 
@@ -37,7 +35,7 @@ const Form = ({ setEmail,email }) => {
 
     // Perform email format validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //RegEx
-    const isValid = emailPattern.test(email);
+    const isValid = emailPattern.test(email); 
     setIsValidEmail(isValid);
     if (!isValid) {
       setShowErrorMessage(true); // Show error message if email is invalid
@@ -73,7 +71,7 @@ const Form = ({ setEmail,email }) => {
           />
           {/* Conditionally render either a Link or a disabled button */}
           {isValidEmail ? (
-            <Link to="/about" style={{ textDecoration: "none" }}>
+            <Link to="/message" style={{ textDecoration: "none" }}>
               <Button
                 text="Subscribe to monthly newsletter"
                 onClick={() => setShowErrorMessage(true)} // Show error message on button click
@@ -92,7 +90,7 @@ const Form = ({ setEmail,email }) => {
         <picture>
           <source media="(max-width: 768px)" srcSet={mobileImage} />
           <source media="(min-width: 769px)" srcSet={desktopImage} />
-          <img src="fallback-image.jpg" alt="Fallback Image" />
+          <img src={desktopImage} alt="Wallpaper" />
         </picture>
       </div>
     </div>
