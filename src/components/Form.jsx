@@ -2,49 +2,38 @@
 import desktopImage from "../assets/images/desktopImage.svg";
 import mobileImage from "../assets/images/mobileImage.svg";
 import icon from "../assets/images/icon.svg";
+import { data } from "../data";
 import Button from "./Button";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const data = [
-  {
-    id: 1,
-    name: "Product discovery and building what matters",
-  },
-  {
-    id: 2,
-    name: "Measuring to ensure updates are a success",
-  },
-  {
-    id: 3,
-    name: "And much more!",
-  },
-];
 
 const Form = ({ setEmail, email }) => {
-  const [isValidEmail, setIsValidEmail] = useState(false); 
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false); // State that'll know if the user enters a wrong email format
+  const navigate = useNavigate();
 
   function handleEmailChange(e) {
-    setEmail(e.target.value); //To get the value of the input element by making React control it instead of the DOM
+    setEmail(e.target.value);
     setIsValidEmail(false); //Setting the value back to the default
   }
 
   function handleFormSubmit(e) {
     e.preventDefault(); //Prevent the default of the form
 
-    // Perform email format validation
+    // Perform email validation using RegEx
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //RegEx
-    const isValid = emailPattern.test(email); 
+    const isValid = emailPattern.test(email);
     setIsValidEmail(isValid);
     if (!isValid) {
       setShowErrorMessage(true); // Show error message if email is invalid
     } else {
-      setEmail(email); // Lift the email state to App
+      setEmail(email);
+      navigate("/message"); // Navigate to "/message" route
     }
   }
 
-  return (
+return (
     <div className="wrapper">
       <div className="wordings">
         <h1>Stay updated!</h1>
@@ -69,21 +58,8 @@ const Form = ({ setEmail, email }) => {
             onChange={handleEmailChange}
             className={showErrorMessage && !isValidEmail ? "error" : ""}
           />
-          {/* Conditionally render either a Link or a disabled button */}
-          {isValidEmail ? (
-            <Link to="/message" style={{ textDecoration: "none" }}>
-              <Button
-                text="Subscribe to monthly newsletter"
-                onClick={() => setShowErrorMessage(true)} // Show error message on button click
-              />
-            </Link>
-          ) : (
-            <Button
-              text="Subscribe to monthly newsletter"
-              disabled={showErrorMessage && !isValidEmail}
-              onClick={() => setShowErrorMessage(true)}
-            />
-          )}
+
+          <Button>Subscribe to monthly newsletter</Button>
         </form>
       </div>
       <div>
